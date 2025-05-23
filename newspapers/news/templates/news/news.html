@@ -1,0 +1,21 @@
+{% extends 'news/base.html' %}
+{% load custom_filter %}
+
+{% block title %}Список новостей{% endblock title %}
+{% block header %}Все новости{% endblock header %}
+
+{% block content %}
+  <ul>
+    {% for post in news %}
+      {% if post.post_type == 'news' %}
+        <li>
+          <a href="{% url 'news_detail' post.id %}">{{ post.title|censor }}</a><br>
+          <small>{{ post.created_at|date:"d.m.Y" }}</small><br>
+          {{ post.content|slice:":20"|censor }}...
+        </li>
+      {% endif %}
+    {% empty %}
+      <li>Новостей пока нет.</li>
+    {% endfor %}
+  </ul>
+{% endblock content %}

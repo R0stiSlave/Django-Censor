@@ -1,0 +1,24 @@
+{% load static %}
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Новостной портал{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>{% block header %}Новостной портал{% endblock header %}</h1>
+    </header>
+    <main>
+        {% block content %}
+        <!-- Если контент не переопределён, покажем сообщение -->
+        <p>Содержание появится здесь.</p>
+        {% endblock content %}
+    </main>
+    <footer>
+        {% block footer %}
+        <p>© 2025 Ваш сайт</p>
+        {% endblock footer %}
+    </footer>
+</body>
+</html>
